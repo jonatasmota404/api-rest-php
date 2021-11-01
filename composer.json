@@ -1,0 +1,20 @@
+{
+    "name": "jonatas/api-rest-php",
+    "description": "Api rest em php para fins de estudo",
+    "authors": [{
+        "name": "Jônatas",
+        "email": "jonatasjr.019@gmail.com"
+    }],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App"
+        },
+        "files": [
+            "config.php"
+        ]
+    },
+    "require": {
+        "php" : ">=7.3"
+    }
+}
