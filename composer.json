@@ -11,10 +11,13 @@
             "App\\": "App"
         },
         "files": [
-            "config.php"
+            "config.php",
+            "App/router/api.php",
+            "app/core/load_controller.php"
         ]
     },
     "require": {
-        "php" : ">=7.3"
+        "php" : ">=7.3",
+        "ext-pdo": "*"
     }
 }
