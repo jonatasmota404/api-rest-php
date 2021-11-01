@@ -9,9 +9,9 @@ class UserController
         var_dump($params);
     }
 
-    public function post()
+    public function create() //post
     {
-
+        var_dump($_POST);
     }
 
     public function update()

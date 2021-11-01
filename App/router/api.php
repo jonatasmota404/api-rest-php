@@ -50,10 +50,11 @@ function router(?string $uri = null) :void
 
     $routes = ROUTES;
     $params = null;
-    var_dump($uri);
-    $matchedUri = matchUriInRoutesArray($uri, $routes);
+    $requestMethod = $_SERVER['REQUEST_METHOD'];
+    $matchedUri = matchUriInRoutesArray($uri, $routes[$requestMethod]);
+
     if (empty($matchedUri)){
-        $matchedUri = regexMatchArrayRoutes($uri, $routes);
+        $matchedUri = regexMatchArrayRoutes($uri, $routes[$requestMethod]);
         $uri = explode("/", ltrim($uri, '/'));
         $params = params($uri, $matchedUri);
         $params = formatParams($uri, $params);

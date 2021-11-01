@@ -6,7 +6,7 @@
 function loadController(array $matchedUri, ?array $params){
     [$controller, $method] = explode("@",array_values($matchedUri)[0]);
     $controllerWithNameSpace = CONTROLLER_NAMESPACE.$controller;
-    var_dump($controllerWithNameSpace);
+
     if (!class_exists($controllerWithNameSpace)){
         throw new Exception("Controller $controller inexistente");
     }
