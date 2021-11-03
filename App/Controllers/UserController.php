@@ -19,7 +19,7 @@ class UserController
             $users = User::getUser($params['user']);
             echo json_encode($users);
         } catch (Exception $e) {
-            echo json_encode($e->getMessage());
+            echo $e->getMessage();
         }
         User::destroy();
     }
