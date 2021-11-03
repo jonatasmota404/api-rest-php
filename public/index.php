@@ -10,5 +10,5 @@ try {
     }
 
 } catch (Exception $e) {
-    echo json_encode(['error'=>['message'=>$e->getMessage(), 'code' => 404]]);
+    echo $e->getMessage();
 }
