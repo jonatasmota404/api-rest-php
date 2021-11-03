@@ -7,7 +7,6 @@ require_once "../vendor/autoload.php";
 
 try {
     $uri = $_GET['uri'] ?? "/";
-
     Router::startRouting($uri);
 
 } catch (Exception $e) {

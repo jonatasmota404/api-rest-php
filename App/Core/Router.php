@@ -63,7 +63,7 @@ class Router
      * $controllerRoute key é a rota.
      * $controllerRoute value é separado em controller e método por @ respetivamente
      */
-    public static function add(array $controllerRoute, string $requestMethod)
+    public static function add(array $controllerRoute, string $requestMethod): void
     {
         self::$routes[strtolower($requestMethod)] = $controllerRoute;
     }
@@ -73,6 +73,7 @@ class Router
     public static function startRouting(?string $uri = null): void
     {
         self::$uri = $uri;
+
         self::$requestMethod = strtolower($_SERVER['REQUEST_METHOD']);
         $params = null;
 
@@ -89,7 +90,6 @@ class Router
 
         if (!empty($matchedUri)){
             LoadController::loadController($matchedUri, $params);
-            //loadController();
             return;
         }
 
