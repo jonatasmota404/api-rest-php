@@ -16,7 +16,12 @@ function regexMatchArrayRoutes($uri, $routes): array
     }, ARRAY_FILTER_USE_KEY);
 }
 
-function params($uri ,$matchedUri): array
+/**
+ * @param $uri
+ * @param $matchedUri
+ * @return array
+ */
+function params($uri , $matchedUri): array
 {
     if (!empty($matchedUri)) {
         $matchedParams = array_keys($matchedUri)[0];
@@ -40,6 +45,7 @@ function formatParams($uri, $params): array
 }
 
 /**
+ * @param string|null $uri
  * @throws Exception
  */
 function router(?string $uri = null) :void
@@ -66,5 +72,5 @@ function router(?string $uri = null) :void
         return;
     }
 
-    throw new Exception('Uri não encontrada');
+    throw new Exception(json_encode(['error'=>['message'=>"Uri não encontrada", 'code' => 404]]));
 }

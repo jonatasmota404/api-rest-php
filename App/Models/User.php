@@ -3,10 +3,22 @@
 namespace App\Models;
 
 use Exception;
+use PDO;
 
 class User
 {
-    private static $table = 'user';
+    private static string $table = 'user';
+    private static ?PDO $conn;
+
+    public static function connect()
+    {
+        self::$conn = new PDO(DBDRIVE. ':host='.DBHOST.';dbname='. DBNAME, DBUSER, DBPASS);
+    }
+
+    public static function destroy()
+    {
+        self::$conn = null;
+    }
 
     /**
      * @param int $id
@@ -15,16 +27,16 @@ class User
      */
     public static function getUser(int $id): array
     {
-        $conn = new \PDO(DBDRIVE. ':host='.DBHOST.';dbname='. DBNAME, DBUSER    , DBPASS);
+
         $sql = "SELECT * FROM " . self::$table. " WHERE id = :id";
-        $stmt = $conn->prepare($sql);
+        $stmt = self::$conn->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0){
-            return $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
-            throw new Exception('Nenhum usuario retornado');
+            throw new Exception(json_encode(['error'=>['message'=>'Nenhum usuario retornado', 'code' => 404]]));
         }
     }
 }
