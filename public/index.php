@@ -1,13 +1,14 @@
 <?php
+
+use App\Core\Router;
+
 require_once "../vendor/autoload.php";
 
 
 try {
-    $uri = $_GET['uri']??"/";
+    $uri = $_GET['uri'] ?? "/";
 
-    if (isset($uri)){
-        router($uri);
-    }
+    Router::startRouting($uri);
 
 } catch (Exception $e) {
     echo $e->getMessage();

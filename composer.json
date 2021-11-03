@@ -12,12 +12,12 @@
         },
         "files": [
             "config.php",
-            "App/router/api.php",
-            "app/core/load_controller.php"
+            "App/router/Api.php"
         ]
     },
     "require": {
-        "php" : ">=7.3",
-        "ext-pdo": "*"
+        "php" : ">=7.4",
+        "ext-pdo": "*",
+        "ext-json": "*"
     }
 }
